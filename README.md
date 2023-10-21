@@ -138,6 +138,7 @@ SQLMAP:
 
 Ataques del lado del cliente:
 - exiftool -a -u archivo.pdf → Extraxión de metadatos con exiftool
+
 canarytokens.org → Crear enlaces maliciosos que crean una huella digital del objetivo
 
 Localización de exploits públicos:
